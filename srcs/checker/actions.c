@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:57:06 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/05 18:14:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/05 19:36:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "checker.h"
 
 int
-	add_to_stack(t_stack **stack, int value)
+	add_to_stack(t_stack **stack, int value, int is_disp)
 {
 	t_stack	*new;
 	t_stack	*ptr;
@@ -24,6 +24,7 @@ int
 		return (1);
 	new->value = value;
 	new->next = NULL;
+	new->disp = is_disp;
 	if (*stack == NULL)
 	{
 		*stack = new;

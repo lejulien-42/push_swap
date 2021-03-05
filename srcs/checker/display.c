@@ -10,7 +10,7 @@ static void
 }
 
 static void
-	ft_print_value(int val)
+	ft_print_value(int val, int aorb)
 {
 	int	buffer;
 	int	size;
@@ -24,7 +24,10 @@ static void
 		buffer = buffer  / 10;
 		size++;
 	}
-	ft_putstr("\e[45m");
+	if (aorb)
+		ft_putstr("\e[45m");
+	else
+		ft_putstr("\e[42m");
 	ft_putnbr_fd(val, 1);
 	while (size < 7)
 	{
@@ -45,14 +48,14 @@ void
 	ft_putstr("\e[49m");
 	while (ptr_a != NULL || ptr_b != NULL)
 	{
-		ft_putstr("| ");
+		ft_putstr("---------------------\n| ");
 		if (ptr_a != NULL)
-			ft_print_value(ptr_a->value);
+			ft_print_value(ptr_a->value, 1);
 		else
 			ft_putstr("       ");
 		ft_putstr(" | ");
 		if (ptr_b != NULL)
-			ft_print_value(ptr_b->value);
+			ft_print_value(ptr_b->value, 0);
 		else
 			ft_putstr("       ");
 		if (ptr_a != NULL)
