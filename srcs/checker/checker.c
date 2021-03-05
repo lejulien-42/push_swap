@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:01:57 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/05 19:35:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/05 23:47:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,25 @@ static int
 	push_values_to_stack(t_stack **stack, char **av, int ac, int pos)
 {
 	int	i;
+	t_stack	*b_stack;
+	t_stack	*ptr;
 
+	b_stack = NULL;
 	i = pos;
 	while (i < ac)
 	{
 		if (add_to_stack(stack, ft_atoi(av[i]), pos))
-			return (1);
+			return (ft_free_stacks(stack, &b_stack, 1));
 		i++;
 	}
-	return (0);
+	ptr = *stack;
+	if (has_double(stack))
+		return (ft_free_stacks(stack, &b_stack, 1));
+	if (ptr->disp == 2)
+		display_stack(stack, &b_stack);
+	if (entry(stack, &b_stack))
+		return (ft_free_stacks(stack, &b_stack, 1));
+	return (ft_free_stacks(stack, &b_stack, 1) - 1);
 }
 
 static int
@@ -38,10 +48,26 @@ static int
 	return (0);
 }
 
+int
+	is_number(char *c)
+{
+	int	i;
+
+	i = 0;
+	while (c[i] != '\0')
+	{
+		if (c[i] < '0' || c[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int
 	check_flags(int ac, char **av)
 {
 	int	i;
+	int x;
 
 	i = 0;
 	if (ac > 2)
@@ -49,8 +75,13 @@ static int
 		if (is_flag(av[1]))
 			i++;
 	}
-	else
-		return (0);
+	x = 1 + i;
+	while (x < ac)
+	{
+		if (!is_number(av[x]))
+			return (0);
+		x++;
+	}
 	return (1 + i);
 }
 
@@ -58,11 +89,9 @@ int
 	main(int ac, char **av)
 {
 	t_stack	*a_stack;
-	t_stack	*b_stack;
 	int		flags;
 
 	a_stack = NULL;
-	b_stack = NULL;
 	if (ac > 1)
 	{
 		if (!(flags = check_flags(ac, av)))
@@ -73,14 +102,13 @@ int
 		if (push_values_to_stack(&a_stack, av, ac, flags))
 		{
 			ft_putstr("Error\n");
-			return (ft_free_stacks(&a_stack, &b_stack, 1));
+			return (1);
 		}
-		display_stack(&a_stack, &b_stack);
 	}
 	else
 	{
 		ft_putstr("Error\n");
 		return (1);
 	}
-	return (ft_free_stacks(&a_stack, &b_stack, 0));
+	return (0);
 }

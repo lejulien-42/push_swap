@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/05 18:07:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/05 23:42:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,29 @@ int
 	ft_free_stacks(t_stack **a_stack, t_stack **b_stack, int ret)
 {
 	ft_free_stack(a_stack);
-	ft_free_stack(b_stack);
+	if (b_stack != NULL)
+		ft_free_stack(b_stack);
 	return (ret);
+}
+
+int
+	has_double(t_stack **stack)
+{
+	t_stack	*ptr1;
+	t_stack	*ptr2;
+
+	ptr1 = *stack;
+	ptr2 = ptr1->next;
+	while (ptr1->next != NULL)
+	{
+		ptr2 = ptr1->next;
+		while (ptr2 != NULL)
+		{
+			if (ptr1->value == ptr2->value)
+				return (1);
+			ptr2 = ptr2->next;
+		}
+		ptr1 = ptr1->next;
+	}
+	return (0);
 }
