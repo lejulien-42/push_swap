@@ -63,9 +63,29 @@ static int
 	parse_entry(char *str, t_stack **a_stack, t_stack **b_stack)
 {
 	if (ft_strcmp("pa\n", str))
-		ft_putstr("You've typed pa\n");
+		push(b_stack, a_stack);
 	else if (ft_strcmp("pb\n", str))
-		ft_putstr("You've typed pb\n");
+		push(a_stack, b_stack);
+	else if (ft_strcmp("sa\n", str))
+		swap(a_stack);
+	else if (ft_strcmp("sb\n", str))
+		swap(b_stack);
+	else if (ft_strcmp("ss\n", str))
+	{
+		swap(a_stack);
+		swap(b_stack);
+	}
+	else if (ft_strcmp("ra\n", str))
+		rotate(a_stack);
+	else if (ft_strcmp("rb\n", str))
+		rotate(b_stack);
+	else if (ft_strcmp("rr\n", str))
+	{
+		rotate(a_stack);
+		rotate(b_stack);
+	}
+	else if (ft_strcmp("\n", str))
+		return (0);
 	else
 		return (1);
 	return (0);

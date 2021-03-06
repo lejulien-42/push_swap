@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:57:06 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/05 19:36:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/06 12:46:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,53 @@ int
 		ptr = ptr->next;
 	ptr->next = new;
 	return (0);
+}
+
+void
+	push(t_stack **a_stack, t_stack **b_stack)
+{
+	t_stack	*ptr;
+
+	if (*a_stack == NULL)
+		return ;
+	ptr = *a_stack;
+	*a_stack = ptr->next;
+	ptr->next = *b_stack;
+	*b_stack = ptr;
+}
+
+void
+	swap(t_stack **stack)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = *stack;
+	if (!a)
+		return ;
+	b = a->next;
+	if (!b)
+		return ;
+	*stack = b;
+	a->next = b->next;
+	b->next = a;
+}
+
+void
+	rotate(t_stack **stack)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = *stack;
+	if (!a)
+		return ;
+	b = a->next;
+	if (!b)
+		return ;
+	while (b->next != NULL)
+		b = b->next;
+	*stack = a->next;
+	b->next = a;
+	a->next = NULL;
 }
