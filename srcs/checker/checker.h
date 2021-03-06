@@ -6,12 +6,14 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:38:15 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/06 12:47:07 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/06 12:59:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
+
+
 
 typedef struct	s_stack
 {
@@ -28,4 +30,5 @@ int		entry(t_stack **a_stack, t_stack **b_stack);
 void	push(t_stack **a_stack, t_stack **b_stack);
 void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
+void	r_rotate(t_stack **stack);
 #endif

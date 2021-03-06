@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:57:06 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/06 12:46:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/06 12:58:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,26 @@ void
 	*stack = a->next;
 	b->next = a;
 	a->next = NULL;
+}
+
+void
+	r_rotate(t_stack **stack)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = *stack;
+	if (!a)
+		return ;
+	b = a->next;
+	if (!b)
+		return ;
+	while (b->next != NULL)
+	{
+		a = a->next;
+		b = b->next;
+	}
+	a->next = NULL;
+	b->next = *stack;
+	*stack = b;
 }

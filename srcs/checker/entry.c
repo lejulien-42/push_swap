@@ -84,6 +84,15 @@ static int
 		rotate(a_stack);
 		rotate(b_stack);
 	}
+	else if (ft_strcmp("rra\n", str))
+		r_rotate(a_stack);
+	else if (ft_strcmp("rrb\n", str))
+		r_rotate(b_stack);
+	else if (ft_strcmp("rrr\n", str))
+	{
+		r_rotate(a_stack);
+		r_rotate(b_stack);
+	}
 	else if (ft_strcmp("\n", str))
 		return (0);
 	else
