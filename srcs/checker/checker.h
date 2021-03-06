@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:38:15 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/06 12:59:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/06 13:25:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	push(t_stack **a_stack, t_stack **b_stack);
 void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	r_rotate(t_stack **stack);
+void	check_stack(t_stack **stack);
 #endif
