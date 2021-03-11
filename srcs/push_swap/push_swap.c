@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:01:57 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 14:30:37 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/11 17:11:43 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int
 	if (has_double(stack))
 		return (ft_free_stacks(stack, &b_stack, 1));
 	//remove after debug
-	display_stack(stack, &b_stack);
+	bubble_sort(stack, ac - 1);
+	write(1, "\0", 1);
 	return (ft_free_stacks(stack, &b_stack, 1) - 1);
 }
 
@@ -90,13 +91,9 @@ int
 	int		flags;
 
 	a_stack = NULL;
+	flags = 1;
 	if (ac > 1)
 	{
-		if (!(flags = check_flags(ac, av)))
-		{
-			ft_putstr("Error\n");
-			return (1);
-		}
 		if (push_values_to_stack(&a_stack, av, ac, flags))
 		{
 			ft_putstr("Error\n");

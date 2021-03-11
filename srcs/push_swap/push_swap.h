@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 15:13:19 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/11 16:23:16 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	push(t_stack **a_stack, t_stack **b_stack);
 void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	r_rotate(t_stack **stack);
-void	check_stack(t_stack **stack);
+int		check_stack(t_stack **stack);
+void	bubble_sort(t_stack **stack, int nbr);
 #endif

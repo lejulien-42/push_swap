@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../utils/utils.h"
 
-void
+int
 	check_stack(t_stack **stack)
 {
 	t_stack	*ptr;
@@ -10,26 +10,19 @@ void
 
 	ptr = *stack;
 	if (ptr == NULL)
-	{
-		ft_putstr("KO\n");
-		return ;
-	}
+		return (1);
 	if (ptr->next == NULL)
-	{
-		ft_putstr("OK\n");
-		return ;
-	}
+		return (1);
 	prev = ptr->value;
 	ptr = ptr->next;
 	while (ptr->next != NULL)
 	{
 		if (prev > ptr->value)
 		{
-			ft_putstr("KO\n");
-			return ;
+			return (1);
 		}
 		prev = ptr->value;
 		ptr = ptr->next;
 	}
-	ft_putstr("OK\n");
+	return (0);
 }
