@@ -135,7 +135,7 @@ int
 		}
 	}
 	free(entry);
-	if (*b_stack == NULL)
+	if (*b_stack != NULL)
 		ft_putstr("KO\n");
 	else
 		check_stack(a_stack);

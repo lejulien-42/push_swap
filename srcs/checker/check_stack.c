@@ -9,7 +9,7 @@ void
 	int		prev;
 
 	ptr = *stack;
-	if (*stack == NULL)
+	if (ptr == NULL)
 	{
 		ft_putstr("KO\n");
 		return ;
@@ -31,4 +31,5 @@ void
 		prev = ptr->value;
 		ptr = ptr->next;
 	}
+	ft_putstr("OK\n");
 }
