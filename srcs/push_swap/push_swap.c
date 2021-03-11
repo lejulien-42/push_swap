@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 13:22:42 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 13:32:09 by lejulien         ###   ########.fr       */
+/*   Created: 2021/03/05 13:01:57 by lejulien          #+#    #+#             */
+/*   Updated: 2021/03/11 14:30:37 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int
 	ptr = *stack;
 	if (has_double(stack))
 		return (ft_free_stacks(stack, &b_stack, 1));
-	if (entry(stack, &b_stack))
-		return (ft_free_stacks(stack, &b_stack, 1));
+	//remove after debug
+	display_stack(stack, &b_stack);
 	return (ft_free_stacks(stack, &b_stack, 1) - 1);
 }
 
@@ -87,11 +87,17 @@ int
 	main(int ac, char **av)
 {
 	t_stack	*a_stack;
+	int		flags;
 
 	a_stack = NULL;
 	if (ac > 1)
 	{
-		if (push_values_to_stack(&a_stack, av, ac, 1))
+		if (!(flags = check_flags(ac, av)))
+		{
+			ft_putstr("Error\n");
+			return (1);
+		}
+		if (push_values_to_stack(&a_stack, av, ac, flags))
 		{
 			ft_putstr("Error\n");
 			return (1);
