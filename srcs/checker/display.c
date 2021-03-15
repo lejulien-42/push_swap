@@ -1,6 +1,7 @@
 #include "checker.h"
 #include "../utils/utils.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static void
 	stack_header()
@@ -14,11 +15,19 @@ static void
 {
 	int	buffer;
 	int	size;
+	int isneg;
 
 	size = 0;
+	isneg = 0;
 	buffer = val;
 	if (val == 0)
 		size = 1;
+	if (val < 0)
+	{
+		size += 2;
+		isneg = 1;
+		val = val * (-1);
+	}
 	while (buffer > 0)
 	{
 		buffer = buffer  / 10;
@@ -28,6 +37,8 @@ static void
 		ft_putstr("\e[45m");
 	else
 		ft_putstr("\e[42m");
+	if (isneg)
+		write(1, "-", 1);
 	ft_putnbr_fd(val, 1);
 	while (size < 7)
 	{

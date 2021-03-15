@@ -67,20 +67,12 @@ static int
 	check_flags(int ac, char **av)
 {
 	int	i;
-	int x;
 
 	i = 0;
 	if (ac > 2)
 	{
 		if (is_flag(av[1]))
 			i++;
-	}
-	x = 1 + i;
-	while (x < ac)
-	{
-		if (!is_number(av[x]))
-			return (0);
-		x++;
 	}
 	return (1 + i);
 }
