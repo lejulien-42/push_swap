@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:01:57 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 17:11:43 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:51:25 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int
 		return (ft_free_stacks(stack, &b_stack, 1));
 	//remove after debug
 	//bubble_sort(stack, ac - 1);
+	quick_sort(stack, &b_stack);
 	write(1, "\x4", 1);
 	return (ft_free_stacks(stack, &b_stack, 1) - 1);
 }
