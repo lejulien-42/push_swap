@@ -6,7 +6,7 @@
 #    By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 13:10:44 by lejulien          #+#    #+#              #
-#    Updated: 2021/03/11 15:35:49 by lejulien         ###   ########.fr        #
+#    Updated: 2021/03/15 19:14:57 by lejulien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS_CHECKER = ./srcs/checker/checker.c ./srcs/checker/actions.c \
 SRCS_PUSH_SWAP = ./srcs/push_swap/push_swap.c ./srcs/push_swap/actions.c \
 			  	 ./srcs/push_swap/error.c ./srcs/push_swap/display.c \
 			  	 ./srcs/push_swap/check_stack.c ./srcs/push_swap/bubblesort.c \
+				 ./srcs/push_swap/part.c ./srcs/push_swap/quick_sort.c
 
 OBJS_UTILS = $(SRCS_UTILS:.c=.o)
 OBJS_CHECKER = $(SRCS_CHECKER:.c=.o)

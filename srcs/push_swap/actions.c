@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:57:06 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 14:24:49 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:10:45 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int
 		return (1);
 	new->value = value;
 	new->next = NULL;
+	new->part = 0;
 	new->disp = is_disp;
 	if (*stack == NULL)
 	{
