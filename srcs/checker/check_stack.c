@@ -21,7 +21,7 @@ void
 	}
 	prev = ptr->value;
 	ptr = ptr->next;
-	while (ptr->next != NULL)
+	while (ptr != NULL)
 	{
 		if (prev > ptr->value)
 		{

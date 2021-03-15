@@ -31,7 +31,7 @@ char
 	}
 	if (!(ret = malloc((ft_strlen(src) + 1) * sizeof(char))))
 		return (NULL);
-	while (src[index] != '\0')
+while (src[index] != '\0')
 	{
 		ret[index] = src[index];
 		index++;
@@ -115,7 +115,9 @@ int
 	entry = NULL;
 	while (run)
 	{
-		if (read(1, &c, 1) == 0)
+		if (read(0, &c, 1) == -1)
+			run = 0;
+		if (c == '\x4')
 			run = 0;
 		entry = add_char(entry, c);
 		if (c == '\n')

@@ -35,7 +35,7 @@ static int
 		return (ft_free_stacks(stack, &b_stack, 1));
 	//remove after debug
 	bubble_sort(stack, ac - 1);
-	write(1, "\0", 1);
+	write(1, "\x4", 1);
 	return (ft_free_stacks(stack, &b_stack, 1) - 1);
 }
 
