@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:57:06 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 14:24:49 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/16 15:32:15 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "../utils/utils.h"
 #include "push_swap.h"
 
 int
@@ -20,11 +21,12 @@ int
 	t_stack	*ptr;
 
 	ptr = *stack;
-	if (!(new = malloc(sizeof(stack))))
+	if (!(new = malloc(sizeof(t_stack))))
 		return (1);
 	new->value = value;
 	new->next = NULL;
 	new->disp = is_disp;
+	new->part = 0;
 	if (*stack == NULL)
 	{
 		*stack = new;
