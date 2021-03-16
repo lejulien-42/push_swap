@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 14:25:38 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/16 17:30:55 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 #include "../utils/utils.h"
+#include <unistd.h>
 
 static void
 	ft_free_stack(t_stack **stack)
@@ -62,4 +63,17 @@ int
 		ptr1 = ptr1->next;
 	}
 	return (0);
+}
+
+void
+	ft_puterror(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
 }

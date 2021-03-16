@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/16 16:04:19 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/16 18:10:42 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,7 @@ int		check_stack(t_stack **stack);
 void	bubble_sort(t_stack **stack, int nbr);
 int		part_length(t_stack **stack, int part);
 void	quick_sort(t_stack **a_stack, t_stack **b_stack);
+int		count_parts(t_stack **stack);
+void	ft_puterror(char *str);
+int		new_part(t_stack **a_stack, t_stack **b_stack);
 #endif

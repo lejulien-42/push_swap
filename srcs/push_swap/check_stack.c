@@ -18,9 +18,7 @@ int
 	while (ptr != NULL)
 	{
 		if (prev > ptr->value)
-		{
 			return (1);
-		}
 		prev = ptr->value;
 		ptr = ptr->next;
 	}
@@ -41,4 +39,50 @@ int
 		ptr = ptr->next;
 	}
 	return (i);
+}
+
+int
+	count_parts(t_stack **stack)
+{
+	int		i;
+	int		tmp;
+	t_stack	*ptr;
+
+	i = 0;
+	tmp = -1;
+	ptr = *stack;
+	while (ptr)
+	{
+		if (ptr->part != tmp)
+		{
+			i++;
+			tmp = ptr->part;
+		}
+		ptr = ptr->next;
+	}
+	return (1);
+}
+
+int
+	new_part(t_stack **a_stack, t_stack **b_stack)
+{
+	int		tmp;
+	t_stack	*ptr;
+
+	tmp = -1;
+	ptr = *a_stack;
+	while (ptr)
+	{
+		if (tmp < ptr->part)
+			tmp = ptr->part;
+		ptr = ptr->next;
+	}
+	ptr = *b_stack;
+	while (ptr)
+	{
+		if (tmp < ptr->part)
+			tmp = ptr->part;
+		ptr = ptr->next;
+	}
+	return (tmp + 1);
 }
