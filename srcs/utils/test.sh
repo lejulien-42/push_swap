@@ -1,4 +1,0 @@
-#!/bin/bash
-make re
-./push_swap 0 1 2 3 -1 -2 -3 | ./checker -v 0 1 2 3 -1 -2 -3
-make fclean
