@@ -26,3 +26,19 @@ int
 	}
 	return (0);
 }
+
+int
+	part_length(t_stack **stack, int part)
+{
+	int		i;
+	t_stack	*ptr;
+
+	i = 0;
+	ptr = *stack;
+	while (ptr && ptr->part == part)
+	{
+		i++;
+		ptr = ptr->next;
+	}
+	return (i);
+}
