@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/16 17:30:55 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/17 09:07:22 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,36 @@ void
 		write(2, &str[i], 1);
 		i++;
 	}
+}
+
+void
+	debug_stack(t_stack **stack)
+{
+	t_stack	*ptr;
+
+	ptr = *stack;
+	while (ptr)
+	{
+		ft_puterror("[");
+		ft_putnbr_fd(ptr->value, 2);
+		ft_puterror("][");
+		ft_putnbr_fd(ptr->part, 2);
+		ft_puterror("]\n");
+		ptr = ptr->next;
+	}
+}
+
+int
+	is_part_in_stack(t_stack **stack, int part)
+{
+	t_stack *ptr;
+
+	ptr = *stack;
+	while (ptr)
+	{
+		if (ptr->part == part)
+			return (1);
+		ptr = ptr->next;
+	}
+	return (0);
 }

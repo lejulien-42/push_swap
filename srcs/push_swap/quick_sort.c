@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:03:35 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/16 18:42:37 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/17 09:48:14 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,18 @@ static void
     length = part_length(a_stack, 0);
     while (i < length - 1)
     {
-        swap(a_stack);
-        ft_putstr("sa\n");
         ptr1 = *a_stack;
         ptr2 = ptr1->next;
+        if (ptr2 && ptr1->part == ptr2->part)
+        {
+            swap(a_stack);
+            ft_putstr("sa\n");
+            ptr1 = *a_stack;
+            ptr2 = ptr1->next;
+        }
         if (ptr2 == NULL)
             return ;
-        if (ptr1->value < ptr2->value)
+        if (ptr1->part == ptr2->part && ptr1->value < ptr2->value)
         {
             ptr1->part = 1;
             push(a_stack, b_stack);
@@ -48,7 +53,7 @@ static void
 }
 
 static void
-    part_parta(t_stack **a_stack, t_stack **b_stack, int part, int new_part)
+    part_parta(t_stack **a_stack, t_stack **b_stack, int part, int new_party)
 {
     int     length;
     int     i;
@@ -57,7 +62,7 @@ static void
 
     i = 0;
     length = part_length(a_stack, part);
-    while (i < length -2)
+    while (i < length - 1)
     {
         ptr1 = *a_stack;
         ptr2 = ptr1->next;
@@ -67,9 +72,9 @@ static void
         ft_putstr("sa\n");
         ptr1 = *a_stack;
         ptr2 = ptr1->next;
-        if (ptr1->value > ptr2->value)
+        if (ptr1->value > ptr2->value && ptr1->part == ptr2->part)
         {
-            ptr1->part = new_part;
+            ptr1->part = new_party;
             push(a_stack, b_stack);
             ft_putstr("pb\n");
         }
@@ -80,12 +85,21 @@ static void
         }
         i++;
     }
+    ptr1 = *a_stack;
+    ptr1->part = new_part(a_stack, b_stack) + 1;
     ptr1 = *b_stack;
-    while (ptr1 && ptr1->part == new_part)
+    while (ptr1 && ptr1->part == new_party)
     {
         push(b_stack, a_stack);
         ft_putstr("pa\n");
         ptr1 = *b_stack;
+    }
+    ptr1 = *a_stack;
+    while (ptr1 && (ptr1->part == new_party || ptr1->part == new_party + 1))
+    {
+        rotate(a_stack);
+        ft_putstr("ra\n");
+        ptr1 = *a_stack;
     }
 }
 
@@ -93,25 +107,27 @@ static void
     quick_sort_a(t_stack **a_stack, t_stack **b_stack)
 {
     int     part;
-    int     parts;
     t_stack *ptr1;
     t_stack *ptr2;
 
     while (check_stack(a_stack))
     {
-        parts = count_parts(a_stack);
         ptr1 = *a_stack;
         ptr2 = ptr1->next;
         if (ptr1)
             part = ptr1->part;
         if (ptr2 && ptr2->part == part)
+        {
             part_parta(a_stack, b_stack, part, new_part(a_stack, b_stack));
-        else
+        }
+        ptr1 = *a_stack;
+        while (part_length(a_stack, ptr1->part) <= 1)
         {
             rotate(a_stack);
             ft_putstr("ra\n");
+            ptr1 = *a_stack;
         }
-        ft_puterror("Here ?\n");
+
     }
 }
 
