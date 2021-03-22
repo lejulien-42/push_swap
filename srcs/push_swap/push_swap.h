@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/17 09:07:41 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/22 14:59:45 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	ft_puterror(char *str);
 int		new_part(t_stack **a_stack, t_stack **b_stack);
 void	debug_stack(t_stack **stack);
 int		is_part_in_stack(t_stack **stack, int part);
+int		r_check_stack(t_stack **stack);
 #endif

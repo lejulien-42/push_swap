@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:03:35 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/18 19:02:13 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/22 15:24:27 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ static void
     t_stack *ptr;
     t_stack *ptr2;
     int     p_next;
+    int     p_length;
     
     while (check_stack(a_stack))
     {
         p_next = new_part(a_stack, b_stack);
         ptr = *a_stack;
-        if (part_length(a_stack, ptr->part) > 1)
+        p_length = part_length(a_stack, ptr->part);
+        while (p_length > 1)
         {
             swap(a_stack);
             ft_putstr("sa\n");
@@ -80,25 +82,74 @@ static void
                 rotate(a_stack);
                 ft_putstr("ra\n");
             }
+            p_length--;
         }
-        else
-        {
-            rotate(a_stack);
-            ft_puterror("sa\n");
-        }
+        rotate(a_stack);
+        ft_putstr("ra\n");
         ptr = *b_stack;
-        while (ptr->part == p_next)
+        while (ptr && ptr->part == p_next)
         {
-            ptr = *b_stack;
             push(b_stack, a_stack);
             ft_putstr("pa\n");
+            ptr = *b_stack;
         }
         ptr = *a_stack;
-        while (ptr->part == p_next)
+        while (ptr && ptr->part == p_next)
         {
-            ptr = *a_stack;
             rotate(a_stack);
             ft_putstr("ra\n");
+            ptr = *a_stack;
+        }
+    }
+}
+
+static void
+    quick_sort_b(t_stack **a_stack, t_stack **b_stack)
+{
+    t_stack *ptr;
+    t_stack *ptr2;
+    int     p_next;
+    int     p_length;
+    
+    while (r_check_stack(b_stack))
+    {
+        p_next = new_part(b_stack, a_stack);
+        ptr = *b_stack;
+        p_length = part_length(b_stack, ptr->part);
+        while (p_length > 1)
+        {
+            swap(b_stack);
+            ft_putstr("sb\n");
+            ptr = *b_stack;
+            ptr2 = ptr->next;
+            if (ptr->value < ptr2->value)
+            {
+                ptr->part = p_next;
+                push(b_stack, a_stack);
+                ft_putstr("pa\n");
+            }
+            else
+            {
+                rotate(b_stack);
+                ft_putstr("rb\n");
+            }
+            p_length--;
+        }
+        rotate(b_stack);
+        ft_putstr("rb\n");
+        ptr = *a_stack;
+        while (ptr && ptr->part == p_next)
+        {
+            push(a_stack, b_stack);
+            ft_putstr("pb\n");
+            ptr = *a_stack;
+        }
+        ptr = *b_stack;
+        while (ptr && ptr->part == p_next)
+        {
+            rotate(b_stack);
+            ft_putstr("rb\n");
+            ptr = *b_stack;
         }
     }
 }
@@ -106,6 +157,21 @@ static void
 void
     quick_sort(t_stack **a_stack, t_stack **b_stack)
 {
+    t_stack *ptr;
+
     partitioning(a_stack, b_stack);
     quick_sort_a(a_stack, b_stack);
+    quick_sort_b(a_stack, b_stack);
+    ptr = *b_stack;
+    while (ptr)
+    {
+        push(b_stack, a_stack);
+        ft_putstr("pa\n");
+        if (*b_stack)
+            ptr = *b_stack;
+        else
+            ptr = NULL;
+        
+    }
+    debug_stack(b_stack);
 }
