@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:03:35 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/22 15:24:27 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/22 16:07:12 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,48 +59,47 @@ static void
     t_stack *ptr2;
     int     p_next;
     int     p_length;
-    
-    while (check_stack(a_stack))
+
+    p_next = new_part(a_stack, b_stack);
+    ptr = *a_stack;
+    p_length = part_length(a_stack, ptr->part);
+    while (p_length > 1)
     {
-        p_next = new_part(a_stack, b_stack);
+        swap(a_stack);
+        ft_putstr("sa\n");
         ptr = *a_stack;
-        p_length = part_length(a_stack, ptr->part);
-        while (p_length > 1)
+        ptr2 = ptr->next;
+        if (ptr->value > ptr2->value)
         {
-            swap(a_stack);
-            ft_putstr("sa\n");
-            ptr = *a_stack;
-            ptr2 = ptr->next;
-            if (ptr->value > ptr2->value)
-            {
-                ptr->part = p_next;
-                push(a_stack, b_stack);
-                ft_putstr("pb\n");
-            }
-            else
-            {
-                rotate(a_stack);
-                ft_putstr("ra\n");
-            }
-            p_length--;
+            ptr->part = p_next;
+            push(a_stack, b_stack);
+            ft_putstr("pb\n");
         }
-        rotate(a_stack);
-        ft_putstr("ra\n");
-        ptr = *b_stack;
-        while (ptr && ptr->part == p_next)
-        {
-            push(b_stack, a_stack);
-            ft_putstr("pa\n");
-            ptr = *b_stack;
-        }
-        ptr = *a_stack;
-        while (ptr && ptr->part == p_next)
+        else
         {
             rotate(a_stack);
             ft_putstr("ra\n");
-            ptr = *a_stack;
         }
+        p_length--;
     }
+    rotate(a_stack);
+    ft_putstr("ra\n");
+    ptr = *b_stack;
+    while (ptr && ptr->part == p_next)
+    {
+        push(b_stack, a_stack);
+        ft_putstr("pa\n");
+        ptr = *b_stack;
+    }
+    ptr = *a_stack;
+    while (ptr && ptr->part == p_next)
+    {
+        rotate(a_stack);
+        ft_putstr("ra\n");
+        ptr = *a_stack;
+    }
+    if (check_stack(a_stack))
+        quick_sort_a(a_stack, b_stack);
 }
 
 static void
@@ -110,48 +109,46 @@ static void
     t_stack *ptr2;
     int     p_next;
     int     p_length;
-    
-    while (r_check_stack(b_stack))
+    p_next = new_part(b_stack, a_stack);
+    ptr = *b_stack;
+    p_length = part_length(b_stack, ptr->part);
+    while (p_length > 1)
     {
-        p_next = new_part(b_stack, a_stack);
+        swap(b_stack);
+        ft_putstr("sb\n");
         ptr = *b_stack;
-        p_length = part_length(b_stack, ptr->part);
-        while (p_length > 1)
+        ptr2 = ptr->next;
+        if (ptr->value < ptr2->value)
         {
-            swap(b_stack);
-            ft_putstr("sb\n");
-            ptr = *b_stack;
-            ptr2 = ptr->next;
-            if (ptr->value < ptr2->value)
-            {
-                ptr->part = p_next;
-                push(b_stack, a_stack);
-                ft_putstr("pa\n");
-            }
-            else
-            {
-                rotate(b_stack);
-                ft_putstr("rb\n");
-            }
-            p_length--;
+            ptr->part = p_next;
+            push(b_stack, a_stack);
+            ft_putstr("pa\n");
         }
-        rotate(b_stack);
-        ft_putstr("rb\n");
-        ptr = *a_stack;
-        while (ptr && ptr->part == p_next)
-        {
-            push(a_stack, b_stack);
-            ft_putstr("pb\n");
-            ptr = *a_stack;
-        }
-        ptr = *b_stack;
-        while (ptr && ptr->part == p_next)
+        else
         {
             rotate(b_stack);
             ft_putstr("rb\n");
-            ptr = *b_stack;
         }
+        p_length--;
     }
+    rotate(b_stack);
+    ft_putstr("rb\n");
+    ptr = *a_stack;
+    while (ptr && ptr->part == p_next)
+    {
+        push(a_stack, b_stack);
+        ft_putstr("pb\n");
+        ptr = *a_stack;
+    }
+    ptr = *b_stack;
+    while (ptr && ptr->part == p_next)
+    {
+        rotate(b_stack);
+        ft_putstr("rb\n");
+        ptr = *b_stack;
+    }
+    if (r_check_stack(b_stack))
+        quick_sort_b(a_stack, b_stack);
 }
 
 void

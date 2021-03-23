@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/22 14:59:45 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/23 16:36:08 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,10 @@ int		new_part(t_stack **a_stack, t_stack **b_stack);
 void	debug_stack(t_stack **stack);
 int		is_part_in_stack(t_stack **stack, int part);
 int		r_check_stack(t_stack **stack);
+void	sort(t_stack **a_stack, t_stack **b_stack);
+int		smallest(t_stack **stack);
+int		biggest(t_stack **stack);
+void	move_top(int val, t_stack **stack);
+void	print_val(char *str, int val);
+int		val_pos(int val, t_stack **stack);
 #endif
