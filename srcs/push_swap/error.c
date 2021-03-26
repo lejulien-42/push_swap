@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/26 14:13:50 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 15:15:13 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,13 @@ void
 }
 
 void
-	debug_stack(t_stack **stack)
+	debug_stack(t_stack **stack, char *str)
 {
 	t_stack	*ptr;
 
+	ft_puterror("--- ");
+	ft_puterror(str);
+	ft_puterror(" ---\n");
 	ptr = *stack;
 	while (ptr)
 	{

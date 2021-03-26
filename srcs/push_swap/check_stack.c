@@ -217,3 +217,43 @@ int
 	}
 	return (0);
 }
+
+static int
+	get_max(t_stack	**b_stack)
+{
+	t_stack	*ptr;
+	int		max;
+
+	if (!*b_stack)
+		return (-1);
+	ptr = *b_stack;
+	max = ptr->value;
+	ptr = ptr->next;
+	while (ptr)
+	{
+		if (ptr->value > max)
+			max = ptr->value;
+		ptr = ptr->next;
+	}
+	return (max);
+}
+
+// here
+
+void
+	go_max(t_stack**b_stack, int part)
+{
+	t_stack	*ptr;
+
+	ptr = *b_stack;
+	if (!*b_stack)
+		return ;
+	ft_putnbr_fd(get_max(b_stack), 2);
+	return ;
+	while (ptr->value != get_max(b_stack))
+	{
+		rotate(b_stack);
+		ft_putstr("rb\n");
+		ptr = *b_stack;
+	}
+}

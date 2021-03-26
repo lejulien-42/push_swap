@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 15:30:32 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/11 16:36:25 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 15:13:01 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,13 @@ void
 		ptr1 = *stack;
 		ptr2 = ptr1->next;
 		if (ptr1->value > ptr2->value)
-		{
 			swap(stack);
-			ft_putstr("sa\n");
-		}
 		if (check_stack(stack))
-		{
 			rotate(stack);
-			ft_putstr("ra\n");
-		}
 		i++;
 		if (i == (ac - 1))
 		{
 			rotate(stack);
-			ft_putstr("ra\n");
 			i = 0;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 13:32:28 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/26 14:24:04 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 17:04:42 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,17 @@ void
 	if (part_length(a_stack, 0) == 3)
 	{
 		sort_3(a_stack);
-		return ;
 	}
 	else if (part_length(a_stack, 0) == 5)
 	{
 		sort_5(a_stack, b_stack);
-		return ;
 	}
-	stack_dup(&test_stack, a_stack);
-	bubble_sort(&test_stack, part_length(&test_stack, 0));
-	debug_stack(&test_stack);
-	ft_free_stack(&test_stack);
+	else
+	{
+		stack_dup(&test_stack, a_stack);
+		bubble_sort(&test_stack, part_length(&test_stack, 0));
+		chunked(&test_stack, 3);
+		sort_chunck(a_stack, b_stack, &test_stack, 3);
+		ft_free_stack(&test_stack);
+	}
 }

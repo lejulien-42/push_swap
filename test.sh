@@ -1,12 +1,7 @@
 #!/bin/bash
 
-export ARG="2 1 6 4 3"
+export ARG="200 2 1 6 4 3 0 9 12 43 22 -4 -23 46 -2 65 74 33 88 99 100"
 
 make re
-./push_swap $ARG | ./checker -v $ARG
-echo "__"
-echo "||"
-echo "||"
-echo "\/ operations"
-./push_swap $ARG | grep -c ""
+./push_swap $ARG #| ./checker $ARG
 make fclean

@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 16:03:35 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/26 13:06:43 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 15:16:22 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,5 +169,4 @@ void
         else
             ptr = NULL;
     }
-    debug_stack(b_stack);
 }
