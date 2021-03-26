@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:57:06 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/16 15:32:15 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 14:10:59 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ int
 		ptr = ptr->next;
 	ptr->next = new;
 	return (0);
+}
+
+void
+	stack_dup(t_stack **res, t_stack **src)
+{
+	t_stack	*ptr;
+
+	*res = NULL;
+	ptr = *src;
+	while (ptr)
+	{
+		add_to_stack(res, ptr->value, 0);
+		ptr = ptr->next;
+	}
 }
 
 void

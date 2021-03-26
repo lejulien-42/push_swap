@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ARG="3 1 2"
+export ARG="2 1 6 4 3"
 
 make re
 ./push_swap $ARG | ./checker -v $ARG

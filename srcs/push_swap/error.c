@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/17 09:07:22 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 14:13:50 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../utils/utils.h"
 #include <unistd.h>
 
-static void
+void
 	ft_free_stack(t_stack **stack)
 {
 	t_stack	*tmp;

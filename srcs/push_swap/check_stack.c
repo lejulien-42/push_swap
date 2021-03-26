@@ -200,3 +200,20 @@ void
 	}
 	
 }
+
+int
+	is_val_in_part(t_stack **stack, int val, int part)
+{
+	t_stack	*ptr;
+
+	ptr = *stack;
+	while (ptr && ptr->part != part)
+		ptr = ptr->next;
+	while (ptr && ptr->part == part)
+	{
+		if (ptr->value == val)
+			return (1);
+		ptr = ptr->next;
+	}
+	return (0);
+}

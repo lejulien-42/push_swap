@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/23 16:36:08 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/26 14:14:11 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,8 @@ int		biggest(t_stack **stack);
 void	move_top(int val, t_stack **stack);
 void	print_val(char *str, int val);
 int		val_pos(int val, t_stack **stack);
+int		is_val_in_part(t_stack **stack, int val, int part);
+void	stack_dup(t_stack **res, t_stack **src);
+void	ft_free_stack(t_stack **stack);
+
 #endif
