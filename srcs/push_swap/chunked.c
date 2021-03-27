@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/27 16:51:56 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:17:30 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ static void
 			ptr = *b_stack;
 		}
 		push(a_stack, b_stack);
+		ft_putstr("pb\n");
 		while (ptr->value != start)
 		{
 			r_rotate(b_stack);
@@ -117,7 +118,6 @@ static void
 	a_ptr = *a_stack;
 	while (is_part_in_stack(a_stack, 0) && a_ptr->part != 0)
 	{
-		ft_puterror("here?\n");
 		rotate(a_stack);
 		ft_putstr("ra\n");
 		a_ptr = *a_stack;
@@ -166,8 +166,6 @@ void
 			j++;
 		}
 		put_in_last(a_stack, b_stack, test_stack, i + 1);
-		debug_stack(a_stack, "A STACK");
-		debug_stack(b_stack, "B STACK");
 		i++;
 		if (i == 3)
 			return ;

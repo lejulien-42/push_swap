@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:01:57 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/23 14:35:25 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:19:03 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static int
 	ptr = *stack;
 	if (has_double(stack))
 		return (ft_free_stacks(stack, &b_stack, 1));
-	//bubble_sort(stack, ac - 1);
-	//quick_sort(stack, &b_stack);
 	sort(stack, &b_stack);
 	write(1, "\x4", 1);
 	return (ft_free_stacks(stack, &b_stack, 1) - 1);
