@@ -56,6 +56,8 @@ int
 
 	i = 0;
 	ptr = *stack;
+	while (ptr && ptr->part != part)
+		ptr = ptr->next;
 	while (ptr && ptr->part == part)
 	{
 		i++;

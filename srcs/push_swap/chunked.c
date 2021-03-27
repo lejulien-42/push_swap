@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/27 14:36:55 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/27 16:22:48 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,20 @@ static void
 }
 
 static void
-	put_in_last(t_stack **a_stack, t_stack **b_stack)
+	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int part)
 {
 	int		i;
 	int		len;
 	t_stack	*ptr;
 
 	ptr = *b_stack;
-	len = part_length(b_stack, ptr->part);
+	if (!ptr)
+		return ;
+	len = part_length(b_stack, part);
 	i = 0;
+	if (len != part_length(test_stack, part))
 	while (i < len)
 	{
-		debug_stack(a_stack, "A STACK");
-		debug_stack(b_stack, "B STACK");
 		push(b_stack, a_stack);
 		ft_putstr("pa\n");
 		i++;
@@ -107,8 +108,6 @@ static void
 	i = 0;
 	while (i < len)
 	{
-		debug_stack(a_stack, "A STACK");
-		debug_stack(b_stack, "B STACK");
 		rotate(a_stack);
 		ft_putstr("ra\n");
 		i++;
@@ -141,7 +140,7 @@ void
 			place_val(a_ptr->value, b_stack, a_stack, i + 1);
 			j++;
 		}
-		put_in_last(a_stack, b_stack);
+		put_in_last(a_stack, b_stack, test_stack, i + 1);
 		debug_stack(a_stack, "A STACK");
 		debug_stack(b_stack, "B STACK");
 		i++;
