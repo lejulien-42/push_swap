@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/26 17:31:30 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/27 13:58:42 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	ft_free_stack(t_stack **stack);
 void	chunked(t_stack **stack, int nbr);
 void	sort_chunck(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int nbr);
 void	go_max(t_stack**b_stack, int part);
+int		get_last_val(t_stack **stack);
 #endif

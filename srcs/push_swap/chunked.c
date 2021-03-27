@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/26 17:32:51 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/27 14:36:55 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,69 @@ void
 // This one will need to be optimized
 
 static void
-	place_val(int val, t_stack **b_stack, int part)
+	place_val(int val, t_stack **b_stack, t_stack **a_stack, int part)
 {
 	t_stack	*ptr;
+	int		start;
 
-	if (!*b_stack)
-		return ;
-	if (part_length(b_stack, part) <= 2)
-		return ;
-	go_max(b_stack, part);
 	ptr = *b_stack;
-	while (val < ptr->value)
+	if (*b_stack == NULL || (ptr && val > ptr->value))
 	{
-		ft_puterror("there\n");
+		push(a_stack, b_stack);
+		ft_putstr("pb\n");
+	}
+	else if (val < get_last_val(b_stack))
+	{
+		push(a_stack, b_stack);
+		ft_putstr("pb\n");
 		rotate(b_stack);
 		ft_putstr("rb\n");
-		ptr = *b_stack;
+	}
+	else
+	{
+		start = ptr->value;
+		while (val < ptr->value)
+		{
+			rotate(b_stack);
+			ft_putstr("rb\n");
+			ptr = *b_stack;
+		}
+		push(a_stack, b_stack);
+		while (ptr->value != start)
+		{
+			r_rotate(b_stack);
+			ft_putstr("rrb\n");
+			ptr = *b_stack;
+		}
+	}
+}
+
+static void
+	put_in_last(t_stack **a_stack, t_stack **b_stack)
+{
+	int		i;
+	int		len;
+	t_stack	*ptr;
+
+	ptr = *b_stack;
+	len = part_length(b_stack, ptr->part);
+	i = 0;
+	while (i < len)
+	{
+		debug_stack(a_stack, "A STACK");
+		debug_stack(b_stack, "B STACK");
+		push(b_stack, a_stack);
+		ft_putstr("pa\n");
+		i++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		debug_stack(a_stack, "A STACK");
+		debug_stack(b_stack, "B STACK");
+		rotate(a_stack);
+		ft_putstr("ra\n");
+		i++;
 	}
 }
 
@@ -91,14 +138,12 @@ void
 				a_ptr = *a_stack;
 			}
 			a_ptr->part = i + 1;
-			place_val(a_ptr->value, b_stack, i + 1);
-			push(a_stack, b_stack);
-			ft_putstr("pb\n");
+			place_val(a_ptr->value, b_stack, a_stack, i + 1);
 			j++;
 		}
+		put_in_last(a_stack, b_stack);
 		debug_stack(a_stack, "A STACK");
 		debug_stack(b_stack, "B STACK");
-		return ; // Remove this when done
 		i++;
 	}
 }

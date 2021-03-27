@@ -257,3 +257,14 @@ void
 		ptr = *b_stack;
 	}
 }
+
+int
+	get_last_val(t_stack **stack)
+{
+	t_stack	*ptr;
+
+	ptr = *stack;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	return (ptr->value);
+}
