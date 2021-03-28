@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/27 17:17:30 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/28 14:54:55 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,32 @@ static int
 }
 
 static void
+	put_prev_chunk_down(t_stack **a_stack, t_stack **test_stack, int part)
+{
+	t_stack	*ptr;
+	int		last;
+
+	ptr = *test_stack;
+	if (part == 1)
+		return ;
+	while (ptr && ptr->part != part - 1)
+		ptr = ptr->next;
+	while (ptr && ptr->next && ptr->next->part == part - 1)
+		ptr = ptr->next;
+	last = ptr->value;
+	while (1)
+	{
+		ptr = *a_stack;
+		while (ptr && ptr->next)
+			ptr = ptr->next;
+		if (ptr->value == last)
+			return ;
+		rotate(a_stack);
+		ft_putstr("ra\n");
+	}
+}
+
+static void
 	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int part)
 {
 	int		i;
@@ -116,12 +142,7 @@ static void
 	if (len != part_length(test_stack, part))
 		return ;
 	a_ptr = *a_stack;
-	while (is_part_in_stack(a_stack, 0) && a_ptr->part != 0)
-	{
-		rotate(a_stack);
-		ft_putstr("ra\n");
-		a_ptr = *a_stack;
-	}
+	put_prev_chunk_down(a_stack, test_stack, part);
 	while (i < len)
 	{
 		push(b_stack, a_stack);

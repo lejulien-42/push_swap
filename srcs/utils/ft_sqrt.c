@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 13:06:31 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/28 14:59:23 by lejulien         ###   ########.fr       */
+/*   Created: 2019/08/12 13:38:59 by lejulien          #+#    #+#             */
+/*   Updated: 2021/03/28 14:59:25 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+int		ft_sqrt(int nb)
+{
+	int i;
 
-int		ft_atoi(const char *str);
-void	ft_putnbr_fd(int nb, int fd);
-void	ft_putstr(const char *str);
-int		ft_sqrt(int nb);
-#endif
+	i = 1;
+	if (nb < 0)
+		return (0);
+	if (nb == 1)
+		return (1);
+	while ((i * i) != nb && (i * i) < nb && i < 46340)
+	{
+		i++;
+		if ((i * i) == nb)
+			return (i);
+	}
+	return (0);
+}
