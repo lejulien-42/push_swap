@@ -270,3 +270,58 @@ int
 		ptr = ptr->next;
 	return (ptr->value);
 }
+
+int
+	stack_len(t_stack **stack)
+{
+	t_stack	*ptr;
+	int		i;
+
+	i = 0;
+	ptr = *stack;
+	while (ptr)
+	{
+		ptr = ptr->next;
+		i++;
+	}
+	return (i);
+}
+
+void
+	ft_goto(t_stack **stack, int val, char *name)
+{
+	t_stack	*ptr;
+	int		pos;
+
+	pos = 0;
+	ptr = *stack;
+	while (ptr && ptr->value != val)
+	{
+		ptr = ptr->next;
+		pos++;
+	}
+	if (pos == 0)
+		return ;
+	if (pos < (int)(stack_len(stack) / 2))
+	{
+		while (pos != 0)
+		{
+			rotate(stack);
+			ft_putstr("r");
+			ft_putstr(name);
+			ft_putstr("\n");
+			pos--;
+		}
+	}
+	else
+	{
+		while (pos != stack_len(stack))
+		{
+			r_rotate(stack);
+			ft_putstr("rr");
+			ft_putstr(name);
+			ft_putstr("\n");
+			pos++;
+		}
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/28 14:54:55 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/29 15:41:55 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,28 +106,25 @@ static void
 	t_stack	*ptr;
 	int		last;
 
-	ptr = *test_stack;
+	ptr = *a_stack;
 	if (part == 1)
 		return ;
 	while (ptr && ptr->part != part - 1)
 		ptr = ptr->next;
-	while (ptr && ptr->next && ptr->next->part == part - 1)
+	while (ptr && ptr->part == part - 1)
 		ptr = ptr->next;
-	last = ptr->value;
-	while (1)
+	if (ptr)
+		ft_goto(a_stack, ptr->value, "a");
+	else
 	{
 		ptr = *a_stack;
-		while (ptr && ptr->next)
-			ptr = ptr->next;
-		if (ptr->value == last)
-			return ;
-		rotate(a_stack);
-		ft_putstr("ra\n");
+		ft_goto(a_stack, ptr->value, "a");
 	}
+	debug_stack(a_stack, "after");
 }
 
 static void
-	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int part)
+	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int part, int nbr)
 {
 	int		i;
 	int		len;
@@ -156,7 +153,7 @@ static void
 		ft_putstr("ra\n");
 		i++;
 	}
-	if (part == 3)
+	if (part == nbr)
 		return;
 }
 
@@ -186,9 +183,9 @@ void
 			place_val(a_ptr->value, b_stack, a_stack, i + 1);
 			j++;
 		}
-		put_in_last(a_stack, b_stack, test_stack, i + 1);
+		put_in_last(a_stack, b_stack, test_stack, i + 1, nbr);
 		i++;
-		if (i == 3)
+		if (i == nbr)
 			return ;
 	}
 }
