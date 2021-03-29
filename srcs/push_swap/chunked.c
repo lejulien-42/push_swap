@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/29 15:41:55 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/29 17:51:55 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ static void
 		ptr = *a_stack;
 		ft_goto(a_stack, ptr->value, "a");
 	}
-	debug_stack(a_stack, "after");
 }
 
 static void
