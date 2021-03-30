@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/29 17:51:55 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/30 13:20:57 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,43 +48,25 @@ void
 
 // This one will need to be optimized
 
+static int
+	find_next_val(t_stack **stack, int val)
+{
+	t_stack	*ptr;
+
+	ptr = *stack;
+	while (val < ptr->value)
+		ptr = ptr->next;
+	return ptr->value;
+}
+
 static void
 	place_val(int val, t_stack **b_stack, t_stack **a_stack, int part)
 {
-	t_stack	*ptr;
-	int		start;
-
-	ptr = *b_stack;
-	if (*b_stack == NULL || (ptr && val > ptr->value))
-	{
-		push(a_stack, b_stack);
-		ft_putstr("pb\n");
-	}
-	else if (val < get_last_val(b_stack))
-	{
-		push(a_stack, b_stack);
-		ft_putstr("pb\n");
-		rotate(b_stack);
-		ft_putstr("rb\n");
-	}
-	else
-	{
-		start = ptr->value;
-		while (val < ptr->value)
-		{
-			rotate(b_stack);
-			ft_putstr("rb\n");
-			ptr = *b_stack;
-		}
-		push(a_stack, b_stack);
-		ft_putstr("pb\n");
-		while (ptr->value != start)
-		{
-			r_rotate(b_stack);
-			ft_putstr("rrb\n");
-			ptr = *b_stack;
-		}
-	}
+	if (*b_stack && val > smallest(b_stack) && val < biggest(b_stack))
+		ft_goto(b_stack, find_next_val(b_stack, val), "b");
+	push(a_stack, b_stack);
+	ft_putstr("pb\n");
+	ft_goto(b_stack, biggest(b_stack), "b");
 }
 
 static int
