@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/30 13:20:57 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:40:23 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,20 @@ void
 	rotate(stack);
 }
 
-// This one will need to be optimized
-
 static int
 	find_next_val(t_stack **stack, int val)
 {
 	t_stack	*ptr;
 
 	ptr = *stack;
-	while (val < ptr->value)
+	while (ptr->value != biggest(stack))
 		ptr = ptr->next;
+	while (val < ptr->value)
+	{
+		ptr = ptr->next;
+		if (!ptr)
+			ptr = *stack;
+	}
 	return ptr->value;
 }
 
@@ -64,9 +68,10 @@ static void
 {
 	if (*b_stack && val > smallest(b_stack) && val < biggest(b_stack))
 		ft_goto(b_stack, find_next_val(b_stack, val), "b");
+	else if (*b_stack)
+		ft_goto(b_stack, biggest(b_stack), "b");
 	push(a_stack, b_stack);
 	ft_putstr("pb\n");
-	ft_goto(b_stack, biggest(b_stack), "b");
 }
 
 static int
@@ -104,6 +109,8 @@ static void
 	}
 }
 
+// Optimizing that
+
 static void
 	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int part, int nbr)
 {
@@ -138,8 +145,6 @@ static void
 		return;
 }
 
-// last time here
-
 void
 	sort_chunck(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int nbr)
 {
@@ -164,6 +169,7 @@ void
 			place_val(a_ptr->value, b_stack, a_stack, i + 1);
 			j++;
 		}
+		ft_goto(b_stack, biggest(b_stack), "b");
 		put_in_last(a_stack, b_stack, test_stack, i + 1, nbr);
 		i++;
 		if (i == nbr)
