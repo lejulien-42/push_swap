@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 13:32:28 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/30 14:56:06 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:41:48 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,16 @@ void
 	t_stack	*test_stack;
 	int		parts;
 
+	if (check_stack(a_stack) == 0 || check_stack(a_stack) == 1)
+		return ;
 	parts = (int)((ft_sqrt(part_length(a_stack, 0))) / 2.0);
 	if (part_length(a_stack, 0) == 3)
 		sort_3(a_stack);
+	else if (part_length(a_stack, 0) == 2)
+	{
+		swap(a_stack);
+		ft_putstr("sa\n");
+	}
 	else
 	{
 		stack_dup(&test_stack, a_stack);
