@@ -120,3 +120,5 @@ export ARG="0 1 2 3 4 5 6 7 8"
 printf "len-->"
 ./push_swap $ARG | grep -c ""
 printf "\n\n"
+
+make fclean
