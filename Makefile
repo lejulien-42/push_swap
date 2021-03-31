@@ -6,12 +6,13 @@
 #    By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 13:10:44 by lejulien          #+#    #+#              #
-#    Updated: 2021/03/28 14:59:56 by lejulien         ###   ########.fr        #
+#    Updated: 2021/03/31 15:59:13 by lejulien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_UTILS = ./srcs/utils/ft_atoi.c ./srcs/utils/ft_putnbr_fd.c \
-			 ./srcs/utils/ft_putstr.c ./srcs/utils/ft_sqrt.c
+			 ./srcs/utils/ft_putstr.c ./srcs/utils/ft_sqrt.c \
+			 ./srcs/utils/ft_itoa.c ./srcs/utils/ft_strcmp.c
 SRCS_CHECKER = ./srcs/checker/checker.c ./srcs/checker/actions.c \
 			   ./srcs/checker/error.c ./srcs/checker/display.c \
 			   ./srcs/checker/entry.c ./srcs/checker/check_stack.c

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 13:06:31 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/31 16:01:35 by lejulien         ###   ########.fr       */
+/*   Created: 2021/03/31 15:46:04 by lejulien          #+#    #+#             */
+/*   Updated: 2021/03/31 16:09:00 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+int		my_strcmp(char *s1, char *s2)
+{
+	int index;
 
-int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
-void	ft_putnbr_fd(int nb, int fd);
-void	ft_putstr(const char *str);
-float	ft_sqrt(float nb);
-int		my_strcmp(char *s1, char *s2);
-#endif
+	index = 0;
+	while (s2[index] && s1[index])
+	{
+		if (s1[index] == s2[index])
+			index++;
+		else
+			return (1);
+	}
+	if (s1[index] == '\0' && s2[index] == '\0')
+		return (0);
+	return (1);
+}
+

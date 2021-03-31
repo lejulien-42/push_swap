@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 13:32:28 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/31 13:16:09 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:15:31 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,60 @@ static void
 	}
 }
 
+static int
+	greater_than(int val, t_stack **stack)
+{
+	t_stack	*ptr;
+
+	ptr = *stack;
+	while (ptr->value != smallest(stack))
+		ptr = ptr->next;
+	while (ptr->value < val)
+	{
+		ptr = ptr->next;
+		if (!ptr)
+			ptr = *stack;
+	}
+	return (ptr->value);
+}
+
+static void
+	sort_5(t_stack **a_stack, t_stack**b_stack)
+{
+	t_stack	*ptr;
+
+	while (stack_len(a_stack) != 3)
+	{
+		push(a_stack, b_stack);
+		ft_putstr("pb\n");
+	}
+	sort_3(a_stack);
+	while (*b_stack)
+	{
+		ptr = *b_stack;
+		if (ptr->value < smallest(a_stack) || ptr->value > biggest(a_stack))
+			ft_goto(a_stack, smallest(a_stack), "a");
+		else
+			ft_goto(a_stack, greater_than(ptr->value, a_stack), "a");
+		push(b_stack, a_stack);
+		ft_putstr("pa\n");
+	}
+	ft_goto(a_stack, smallest(a_stack), "a");
+}
+
 void
 	sort(t_stack **a_stack, t_stack **b_stack)
 {
 	t_stack	*test_stack;
 	int		parts;
 
-//	if (check_stack(a_stack) == 0 || check_stack(a_stack) == 1)
-//		return ;
+	if (check_stack(a_stack) == 0 || stack_len(a_stack) == 1)
+		return ;
 	parts = (int)((ft_sqrt(part_length(a_stack, 0))) / 2.0);
 	if (part_length(a_stack, 0) == 3)
 		sort_3(a_stack);
+	else if (part_length(a_stack, 0) == 5)
+		sort_5(a_stack, b_stack);
 	else if (part_length(a_stack, 0) == 2)
 	{
 		swap(a_stack);
