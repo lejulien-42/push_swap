@@ -108,6 +108,7 @@ int
 	t_stack	*a_ptr;
 	t_stack	*b_ptr;
 	char	*entry;
+	int		ret;
 
 	a_ptr = *a_stack;
 	b_ptr = *b_stack;
@@ -115,7 +116,8 @@ int
 	entry = NULL;
 	while (run)
 	{
-		if (read(0, &c, 1) == -1)
+		ret = read(0, &c, 1);
+		if (ret == -1 || ret == 0)
 			run = 0;
 		if (c == '\x4')
 			run = 0;

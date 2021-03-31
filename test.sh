@@ -42,7 +42,35 @@ export ARG="14 7 9"
 printf "pb \n" | ./checker $ARG
 printf "\n\n"
 
-printf "### PUSH_SWAP TEST ###\n"		# push_swap
+printf "manual entry case (please enter some instruction then ctrl-D)\n"
+export ARG="14 7 9"
+./checker $ARG
+printf "\n\n"
+
+printf "manual entry case (please enter some instruction then ctrl-D)\n"
+export ARG="0 1 2 3"
+./checker $ARG
+printf "\n\n"
+
+printf "### PUSH_SWAP TEST ###\n"					# push_swap test
+
+printf "one case\n"
+export ARG="42"
+./push_swap $ARG
+printf "\n\n"
+
+printf "ordered case\n"
+export ARG="0 1 2 3 4"
+./push_swap $ARG
+printf "\n\n"
+
+printf "longer ordered case\n"
+export ARG="0 1 2 3 4 5 6 7 8 9"
+./push_swap $ARG
+printf "\n\n"
+
+
+printf "### PUSH_SWAP AND CHECKER TEST ###\n"		# push_swap and checker test
 
 printf "one case\n"
 export ARG="200"
