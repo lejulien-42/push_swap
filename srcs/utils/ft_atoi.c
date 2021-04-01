@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:06:04 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/05 13:09:57 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:38:37 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ int				ft_atoi(const char *str)
 	}
 	return (sign * nbr);
 }
-

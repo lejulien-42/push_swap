@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/05 23:42:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/01 13:40:58 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void
 	}
 	*stack = NULL;
 }
-
 
 int
 	ft_free_stacks(t_stack **a_stack, t_stack **b_stack, int ret)
