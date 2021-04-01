@@ -6,13 +6,38 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 13:32:28 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/31 14:15:31 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:00:57 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "../utils/utils.h"
 #include <stdlib.h>
+
+static void
+	sort_3_two(t_stack **a_stack, t_stack *ptr)
+{
+	if (ptr->next->value < ptr->next->next->value &&
+			ptr->next->next->value < ptr->value)
+	{
+		rotate(a_stack);
+		ft_putstr("ra\n");
+	}
+	else if (ptr->value < ptr->next->next->value &&
+			ptr->next->next->value < ptr->next->value)
+	{
+		swap(a_stack);
+		ft_putstr("sa\n");
+		rotate(a_stack);
+		ft_putstr("ra\n");
+	}
+	else if (ptr->next->next->value < ptr->value &&
+			ptr->value < ptr->next->value)
+	{
+		r_rotate(a_stack);
+		ft_putstr("rra\n");
+	}
+}
 
 static void
 	sort_3(t_stack **a_stack)
@@ -25,30 +50,16 @@ static void
 		swap(a_stack);
 		ft_putstr("sa\n");
 	}
-	else if (ptr->value > ptr->next->value && ptr->next->value > ptr->next->next->value)
+	else if (ptr->value > ptr->next->value &&
+			ptr->next->value > ptr->next->next->value)
 	{
 		swap(a_stack);
 		ft_putstr("sa\n");
 		r_rotate(a_stack);
 		ft_putstr("rra\n");
 	}
-	else if (ptr->next->value < ptr->next->next->value && ptr->next->next->value < ptr->value)
-	{
-		rotate(a_stack);
-		ft_putstr("ra\n");
-	}
-	else if (ptr->value < ptr->next->next->value && ptr->next->next->value < ptr->next->value)
-	{
-		swap(a_stack);
-		ft_putstr("sa\n");
-		rotate(a_stack);
-		ft_putstr("ra\n");
-	}
-	else if (ptr->next->next->value < ptr->value && ptr->value < ptr->next->value)
-	{
-		r_rotate(a_stack);
-		ft_putstr("rra\n");
-	}
+	else
+		sort_3_two(a_stack, ptr);
 }
 
 static int
@@ -69,7 +80,7 @@ static int
 }
 
 static void
-	sort_5(t_stack **a_stack, t_stack**b_stack)
+	sort_5(t_stack **a_stack, t_stack **b_stack)
 {
 	t_stack	*ptr;
 

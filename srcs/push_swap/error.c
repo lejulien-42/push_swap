@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:59:25 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/26 15:15:13 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:51:10 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void
 	}
 	*stack = NULL;
 }
-
 
 int
 	ft_free_stacks(t_stack **a_stack, t_stack **b_stack, int ret)
@@ -75,26 +74,6 @@ void
 	{
 		write(2, &str[i], 1);
 		i++;
-	}
-}
-
-void
-	debug_stack(t_stack **stack, char *str)
-{
-	t_stack	*ptr;
-
-	ft_puterror("--- ");
-	ft_puterror(str);
-	ft_puterror(" ---\n");
-	ptr = *stack;
-	while (ptr)
-	{
-		ft_puterror("[");
-		ft_putnbr_fd(ptr->value, 2);
-		ft_puterror("][");
-		ft_putnbr_fd(ptr->part, 2);
-		ft_puterror("]\n");
-		ptr = ptr->next;
 	}
 }
 

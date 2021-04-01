@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 14:24:17 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/29 15:46:37 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:06:40 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ void	go_max(t_stack**b_stack, int part);
 int		get_last_val(t_stack **stack);
 void	ft_goto(t_stack **stack, int val, char *name);
 int		stack_len(t_stack **stack);
+int		check_max(int ac, char **av);
+int		check_num(int ac, char **av);
 #endif

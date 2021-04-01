@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:26:29 by lejulien          #+#    #+#             */
-/*   Updated: 2021/03/30 15:40:23 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:58:05 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int
 		if (!ptr)
 			ptr = *stack;
 	}
-	return ptr->value;
+	return (ptr->value);
 }
 
 static void
@@ -109,10 +109,9 @@ static void
 	}
 }
 
-// Optimizing that
-
 static void
-	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int part, int nbr)
+	put_in_last(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack,
+				int part)
 {
 	int		i;
 	int		len;
@@ -141,12 +140,11 @@ static void
 		ft_putstr("ra\n");
 		i++;
 	}
-	if (part == nbr)
-		return;
 }
 
 void
-	sort_chunck(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack, int nbr)
+	sort_chunck(t_stack **a_stack, t_stack **b_stack, t_stack **test_stack,
+				int nbr)
 {
 	t_stack	*a_ptr;
 	int		i;
@@ -170,7 +168,7 @@ void
 			j++;
 		}
 		ft_goto(b_stack, biggest(b_stack), "b");
-		put_in_last(a_stack, b_stack, test_stack, i + 1, nbr);
+		put_in_last(a_stack, b_stack, test_stack, i + 1);
 		i++;
 		if (i == nbr)
 			return ;

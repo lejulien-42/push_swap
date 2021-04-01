@@ -1,0 +1,16 @@
+Norme: ./srcs/push_swap/action2.c
+Norme: ./srcs/push_swap/bubblesort.c
+Norme: ./srcs/push_swap/goto.c
+Norme: ./srcs/push_swap/error.c
+Norme: ./srcs/push_swap/push_swap2.c
+Norme: ./srcs/push_swap/count.c
+Norme: ./srcs/push_swap/actions.c
+Norme: ./srcs/push_swap/last_max.c
+Norme: ./srcs/push_swap/check_stack.c
+Norme: ./srcs/push_swap/push_swap.c
+Norme: ./srcs/push_swap/sort.c
+Norme: ./srcs/push_swap/chunked.c
+Error: 7 functions in the file
+Error (line 17): function chunked has 27 lines
+Error (line 112): function put_in_last has 27 lines
+Error (line 145): function sort_chunck has 27 lines

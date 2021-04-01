@@ -6,7 +6,7 @@
 #    By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 13:10:44 by lejulien          #+#    #+#              #
-#    Updated: 2021/04/01 14:19:29 by lejulien         ###   ########.fr        #
+#    Updated: 2021/04/01 17:43:13 by lejulien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,11 @@ SRCS_CHECKER = ./srcs/checker/checker.c ./srcs/checker/actions.c \
 			   ./srcs/checker/entry.c ./srcs/checker/check_stack.c \
 			   ./srcs/checker/parse_entry.c
 SRCS_PUSH_SWAP = ./srcs/push_swap/push_swap.c ./srcs/push_swap/actions.c \
-			  	 ./srcs/push_swap/error.c ./srcs/push_swap/display.c \
+			  	 ./srcs/push_swap/error.c ./srcs/push_swap/action2.c \
 			  	 ./srcs/push_swap/check_stack.c ./srcs/push_swap/bubblesort.c \
-				 ./srcs/push_swap/quick_sort.c ./srcs/push_swap/sort.c \
-				 ./srcs/push_swap/chunked.c
+				 ./srcs/push_swap/sort.c ./srcs/push_swap/push_swap2.c \
+				 ./srcs/push_swap/chunked.c ./srcs/push_swap/goto.c \
+				 ./srcs/push_swap/count.c ./srcs/push_swap/last_max.c
 OBJS_UTILS = $(SRCS_UTILS:.c=.o)
 OBJS_CHECKER = $(SRCS_CHECKER:.c=.o)
 OBJS_PUSH_SWAP = $(SRCS_PUSH_SWAP:.c=.o)
