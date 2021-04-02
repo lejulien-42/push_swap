@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 15:03:15 by lejulien          #+#    #+#             */
-/*   Updated: 2021/04/01 15:07:13 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/02 13:31:16 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int
 	i = 1;
 	while (i < ac)
 	{
+		if (av[i][0] == '\0')
+			return (1);
 		i_tmp = ft_atoi(av[i]);
 		tmp = ft_itoa(i_tmp);
 		if (i_tmp != 0 && my_strcmp(av[i], tmp))

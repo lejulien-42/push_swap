@@ -6,7 +6,7 @@
 #    By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/05 13:10:44 by lejulien          #+#    #+#              #
-#    Updated: 2021/04/01 18:04:38 by lejulien         ###   ########.fr        #
+#    Updated: 2021/04/02 13:28:10 by lejulien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ all:	$(NAME)
 .PHONY:	clean fclean re
 
 $(NAME):	$(OBJS_UTILS) $(OBJS_CHECKER) $(OBJS_PUSH_SWAP)
-	gcc -o $(NAME) $(OBJS_UTILS) $(OBJS_CHECKER)
-	gcc -o push_swap $(OBJS_UTILS) $(OBJS_PUSH_SWAP)
+	gcc -o $(NAME) $(FLAGS) $(OBJS_UTILS) $(OBJS_CHECKER)
+	gcc -o push_swap $(FLAGS) $(OBJS_UTILS) $(OBJS_PUSH_SWAP)
 
 clean:
 	rm -f $(OBJS_CHECKER) $(OBJS_PUSH_SWAP) $(OBJS_UTILS)
