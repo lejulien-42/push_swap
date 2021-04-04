@@ -6,7 +6,7 @@
 /*   By: lejulien <lejulien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 13:32:28 by lejulien          #+#    #+#             */
-/*   Updated: 2021/04/01 15:00:57 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/04 18:06:18 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,17 @@ static void
 
 	while (stack_len(a_stack) != 3)
 	{
+		ft_goto(a_stack, smallest(a_stack), "a");
 		push(a_stack, b_stack);
 		ft_putstr("pb\n");
 	}
 	sort_3(a_stack);
+	ft_goto(a_stack, smallest(a_stack), "a");
 	while (*b_stack)
 	{
-		ptr = *b_stack;
-		if (ptr->value < smallest(a_stack) || ptr->value > biggest(a_stack))
-			ft_goto(a_stack, smallest(a_stack), "a");
-		else
-			ft_goto(a_stack, greater_than(ptr->value, a_stack), "a");
 		push(b_stack, a_stack);
 		ft_putstr("pa\n");
 	}
-	ft_goto(a_stack, smallest(a_stack), "a");
 }
 
 void
@@ -112,7 +108,7 @@ void
 	if (check_stack(a_stack) == 0 || stack_len(a_stack) == 1)
 		return ;
 	parts = (int)((ft_sqrt(part_length(a_stack, 0))) / 2.0);
-	if (part_length(a_stack, 0) == 3)
+	if (part_length(a_stack, 0) > 3 && part_length(a_stack, 0) < 51)
 		sort_3(a_stack);
 	else if (part_length(a_stack, 0) == 5)
 		sort_5(a_stack, b_stack);

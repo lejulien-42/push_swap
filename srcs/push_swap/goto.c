@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:34:57 by lejulien          #+#    #+#             */
-/*   Updated: 2021/04/01 17:36:07 by lejulien         ###   ########.fr       */
+/*   Updated: 2021/04/04 17:54:41 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void
 	}
 	if (pos == 0)
 		return ;
-	if (pos < (int)(stack_len(stack) / 2))
+	if (pos <= (int)(stack_len(stack) / 2))
 		ft_goto_rotate(stack, pos, name);
 	else
 		ft_goto_r_rotate(stack, pos, name);
